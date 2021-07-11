@@ -4,8 +4,13 @@ GO ?= go
 GO_CMD := CGO_ENABLED=0 $(GO)
 GIT_VERSION := $(shell git describe --tags --dirty --always)
 VERSION := $(GIT_VERSION:v%=%)
-DOCKER_TAG ?= $(VERSION)
 GIT_COMMIT := $(shell git rev-parse HEAD)
+GIT_BRANCH := $(shell git branch --show-current)
+DOCKER_TAG != if [ "$(GIT_BRANCH)" = "master" ]; then \
+		echo "latest"; \
+	else \
+		echo "$(VERSION)"; \
+	fi
 
 all: test build-binary
 

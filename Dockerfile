@@ -11,6 +11,7 @@ RUN make
 
 FROM busybox
 LABEL maintainer="Robert Jacob <xperimental@solidproject.de>"
+LABEL org.opencontainers.image.source="https://github.com/xperimental/steam-exporter"
 
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=builder /build/steam-exporter /bin/steam-exporter

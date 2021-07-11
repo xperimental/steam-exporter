@@ -45,6 +45,12 @@ servers:
 - address: 127.0.0.1:65000
 ```
 
+The exporter's default port is `9837`, so after starting the exporter the metrics should be available on:
+
+```plain
+http://127.0.0.1:9837/metrics
+```
+
 ### Exported metrics
 
 | Name | Description |

@@ -15,7 +15,7 @@ build-binary:
 	$(GO_CMD) build -tags netgo -ldflags "-w -X main.Version=$(VERSION) -X main.GitCommit=$(GIT_COMMIT)" -o steam-exporter .
 
 image:
-	docker build -t "xperimental/steam-exporter:$(VERSION)" .
+	docker build -t "ghcr.io/xperimental/steam-exporter:$(VERSION)" .
 
 clean:
 	rm -f steam-exporter

@@ -23,3 +23,5 @@ jobs:
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build image
       run: make all-images
+      env:
+        DOCKER_TAG: ${{ github.ref == 'refs/heads/master' && 'latest' }}

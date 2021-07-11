@@ -2,14 +2,15 @@ package main
 
 import (
 	"errors"
+	"net/http"
+	"os"
+
 	"github.com/prometheus/client_golang/prometheus"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/pflag"
 	"github.com/xperimental/steam-exporter/internal/collector"
 	"github.com/xperimental/steam-exporter/internal/config"
-	"net/http"
-	"os"
+	"github.com/xperimental/steam-exporter/internal/web"
 )
 
 var (
@@ -41,10 +42,10 @@ func main() {
 		log.Fatalf("Can not register collector: %s", err)
 	}
 
-	http.Handle("/metrics", promhttp.Handler())
+	r := web.Handler(log, GitCommit, Version)
 
 	log.Infof("Listening on %s ...", cfg.ListenAddress)
-	if err := http.ListenAndServe(cfg.ListenAddress, nil); err != nil {
+	if err := http.ListenAndServe(cfg.ListenAddress, r); err != nil {
 		log.Fatalf("Error creating listener: %s", err)
 	}
 }

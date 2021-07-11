@@ -25,7 +25,7 @@ func Get(cmd string, args []string) (*Config, error) {
 	cfg := &Config{
 		ConfigFile:    "steam-exporter.yml",
 		Verbose:       false,
-		ListenAddress: ":9791",
+		ListenAddress: ":9837",
 		DataTimeout:   1 * time.Second,
 	}
 

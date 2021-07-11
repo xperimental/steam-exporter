@@ -18,7 +18,7 @@ image:
 	docker build -t "ghcr.io/xperimental/steam-exporter:$(VERSION)" .
 
 all-images:
-	docker buildx build -t "ghcr.io/xperimental/steam-exporter:$(VERSION)" --platform linux/amd64,linux/arm64 .
+	docker buildx build -t "ghcr.io/xperimental/steam-exporter:$(VERSION)" --platform linux/amd64,linux/arm64 --push .
 
 clean:
 	rm -f steam-exporter

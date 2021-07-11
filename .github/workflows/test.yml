@@ -1,8 +1,5 @@
-name: Test
+name: Test Pull-request
 on:
-  push:
-    branches:
-    - master
   pull_request:
     branches:
     - master
